@@ -1,3 +1,21 @@
+// 另一种写法
+function isMobile() {
+  try {
+    document.createEvent("TouchEvent"); return true;
+  } catch(e) {
+    return false;
+  }
+}
+function log(txt,isClean = false){
+  return;
+  if(isClean){
+    document.querySelector('#consoleLog').innerHTML = ''
+  }
+  if(txt){
+    document.querySelector('#consoleLog').append(txt+'\n')
+  }
+}
+
 let postFile = {
   init: function () {
     let t = this;
@@ -9,8 +27,8 @@ let postFile = {
     t.py = 0; //background image y
     t.sx = 15; //crop area x
     t.sy = 15; //crop area y
-    t.sHeight = 96; //crop area height //in：英寸 （1in = 96px = 2.54cm）;
-    t.sWidth = 96; //crop area width
+    t.sHeight = 96*2; //crop area height //in：英寸 （1in = 96px = 2.54cm）;
+    t.sWidth = 96*2; //crop area width
     document.getElementById('post_file').addEventListener('change', t.handleFiles, false);
     document.getElementById('save_button').onclick = function () {
       t.editPic.height = t.sHeight;
@@ -85,21 +103,40 @@ let postFile = {
     let draging = false;
     let startX = 0;
     let startY = 0;
+    let downOnName = 'onmousedown'
+    let upOnName = 'onmouseup'
+    if(isMobile()){
+      downOnName = 'ontouchstart'
+      upOnName = 'ontouchend'
+    }
+    //移动端不是mousedown、mousemove和mouseup
+    //相应的应是touchstart、touchmove和touchend
+    log(downOnName)
+    log(upOnName)
 
-    document.getElementById('cover_box').onmousemove = function(e) {
+    let onMove = function(_e) {
+      let e = _e
+      if(isMobile()){
+        e = _e.targetTouches[0]
+      }
+      console.log('e???',e)
       let pageX = e.pageX - ( t.regional.offsetLeft + this.offsetLeft );
       let pageY = e.pageY - ( t.regional.offsetTop + this.offsetTop );
+      log(pageX,true)
+      log(pageY)
 
       if ( pageX > t.sx && pageX < t.sx + t.sWidth && pageY > t.sy && pageY < t.sy + t.sHeight ) {
           this.style.cursor = 'move';
-          this.onmousedown = function(){
+          this[downOnName] = function(){
             draging = true;
+            console.log('e???01',e)
             t.ex = t.sx;
             t.ey = t.sy;
             startX = e.pageX - ( t.regional.offsetLeft + this.offsetLeft );
             startY = e.pageY - ( t.regional.offsetTop + this.offsetTop );
           }
-          window.onmouseup = function() {
+          window[upOnName] = function() {
+            console.log('e???02',e)
             draging = false;
           }
           if (draging) {
@@ -123,7 +160,12 @@ let postFile = {
       } else{
         this.style.cursor = 'auto';
       }
-    };
+    }
+    if(isMobile()){
+      document.getElementById('cover_box').addEventListener('touchmove',onMove,false);
+    }else{
+      document.getElementById('cover_box').onmousemove = onMove;
+    }
   }
 
 };
