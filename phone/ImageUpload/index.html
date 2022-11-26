@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>证件上传</title>
+  </head>
+  <style type="text/css">
+    body {
+      text-align: center;
+    }
+    #label {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      text-align: center;
+      height: 300px;
+      width: 300px;
+      margin: 20px auto;
+      position: relative;
+    }
+    #get_image {
+      position: absolute;
+    }
+    #edit_pic {
+      position: absolute;
+      display: none;
+      background: #000;
+    }
+    #cover_box {
+      position: absolute;
+      z-index: 9999;
+      display: none;
+      top: 0px;
+      left: 0px;
+    }
+    #show_edit {
+      margin: 0 auto;
+      display: inline-block;
+    }
+    #show_pic {
+      width: 1in;
+      height: 1in;
+      border: 2px solid #000;
+      overflow: hidden;
+      margin: 0 auto;
+      display: inline-block;
+    }
+  </style>
+  <body>
+    <div>
+      姓名
+      <input type="input" id="name"/>
+    </div>
+    <div>
+      学号
+      <input type="input" id="idcard"/>
+    </div>
+    <div>
+      照片
+      <input type="file" name="file" capture= "camera" id="post_file" />
+      <button id="save_button">确定</button>
+      <div id="label">
+        <canvas id="get_image"></canvas>
+        <p>
+          <canvas id="cover_box"></canvas>
+          <canvas id="edit_pic"></canvas>
+        </p>
+      </div>
+      <p>
+        <span id="show_edit"></span>
+        <span id="show_pic"><img src="" /></span>
+      </p>
+    </div>
+    <div>
+      <input type="file" name="file"/>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
