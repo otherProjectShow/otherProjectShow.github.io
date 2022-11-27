@@ -7,7 +7,7 @@ function isMobile() {
   }
 }
 function log(txt,isClean = false){
-  return;
+  //return;
   if(isClean){
     document.querySelector('#consoleLog').innerHTML = ''
   }
@@ -27,8 +27,8 @@ let postFile = {
     t.py = 0; //background image y
     t.sx = 15; //crop area x
     t.sy = 15; //crop area y
-    t.sHeight = 96*2; //crop area height //in：英寸 （1in = 96px = 2.54cm）;
-    t.sWidth = 96*2; //crop area width
+    t.sHeight = 96; //crop area height //in：英寸 （1in = 96px = 2.54cm）;
+    t.sWidth = 96; //crop area width
     document.getElementById('post_file').addEventListener('change', t.handleFiles, false);
     document.getElementById('save_button').onclick = function () {
       t.editPic.height = t.sHeight;
@@ -42,14 +42,74 @@ let postFile = {
         document.getElementById('show_pic').getElementsByTagName('img')[0].src = t.editPic.toDataURL();
       };
     };
+
+    document.querySelectorAll("input[type='radio'][name='size']").forEach(x => x.onchange = (e) => {
+      t.sHeight = 96*x.value
+      console.log(`🚀 ----------------------------------------------------------------------------🚀`);
+      console.log(`🚀 ~ file: main.js ~ line 48 ~ document.querySelector ~ t.sHeight`, t.sHeight,x,e,x.value);
+      console.log(`🚀 ----------------------------------------------------------------------------🚀`);
+      t.sWidth = 96*x.value
+      if(_file.imageData){
+        postFile.paintImage(_file.imageData);
+      }
+    }
+    )
+
+
+    return t;
   },
   handleFiles: function() {
     let fileList = this.files[0];
     let oFReader = new FileReader();
     oFReader.readAsDataURL(fileList);
     oFReader.onload = function (oFREvent) {
+      console.log('res => ',oFREvent.target.result)
+      _file.imageData = oFREvent.target.result;
       postFile.paintImage(oFREvent.target.result);
     };
+  },
+  cleanFiles: function() {
+    let t = _file;
+
+    let createCanvas = t.getImage.getContext("2d");
+
+    let w = t.getImage.width;
+    let h = t.getImage.height;
+    createCanvas.clearRect(0, 0, w, h);
+    let cover = t.editBox.getContext("2d");
+
+    w = t.editBox.width;
+    h = t.editBox.height;
+    cover.clearRect(0, 0, w, h);
+
+
+    // t.getImage.a
+    // t.getImage.width = 'auto'
+    // t.getImage.height = 'auto'
+    // t.getImage.style = {}
+
+    // t.editBox.width = 'auto'
+    // t.editBox.height = 'auto'
+    // t.editBox.style = {}
+
+    document.querySelector('#cover_box').style= '';
+    document.querySelector('#cover_box').removeAttribute('width');
+    document.querySelector('#cover_box').removeAttribute('height');
+
+    document.querySelector('#edit_pic').style= '';
+    document.querySelector('#edit_pic').removeAttribute('width');
+    document.querySelector('#edit_pic').removeAttribute('height');
+
+    document.querySelector('#get_image').style= '';
+    document.querySelector('#get_image').removeAttribute('width');
+    document.querySelector('#get_image').removeAttribute('height');
+
+    document.querySelector('#show_edit').style= '';
+    document.querySelector('#show_pic img').src= '';
+
+
+    document.getElementById('show_edit').style.background = '';
+
   },
   paintImage: function(url) {
     let t = this;
@@ -170,7 +230,7 @@ let postFile = {
 
 };
 
-postFile.init();
+let _file = postFile.init();
 
 
 

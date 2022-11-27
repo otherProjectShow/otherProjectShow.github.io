@@ -57,10 +57,17 @@
     </div>
     <div>
       照片
-      <!-- <input type="file" name="file" capture= "camera" id="post_file" /> -->
-      <input type="file" name="file" id="post_file" />
+      <input style="display:none;" type="file" name="file" capture= "camera" id="post_file" />
+      <!-- <input type="file" name="file" id="post_file" /> -->
       <button id="save_button">确定</button>
+      <div>
+        <input type="radio" name="size" value="1"  checked="checked">1寸</input>
+        <input type="radio" name="size" value="2">2寸</input>
+        <button onclick="_file.cleanFiles()">清空</button>
+
+      </div>
       <div id="label">
+        <div style="font-size: 10rem;cursor: default;" onclick="document.querySelector('#post_file').click()">+</div>
         <canvas id="get_image"></canvas>
         <p>
           <canvas id="cover_box"></canvas>
