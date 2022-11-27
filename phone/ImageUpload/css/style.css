@@ -1,0 +1,128 @@
+body {
+	background-color: #007df9;
+	margin: 0;
+	padding: 0;
+}
+img{
+	width: 100%;
+}
+.top_head{
+	height: 44px;
+	line-height: 44px;
+	position: relative;
+	text-align: center;
+}
+.top_spanl{
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 15px;
+	width: 11px;
+}
+.top_spanl img{
+	width: 11px;
+}
+.top_spanc{
+	display: inline-block;
+	text-align: center;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+.contant{
+	padding: 15px;
+}
+.cont_top{
+	background-color: #fff;
+	border-radius: 10px 10px 0 0;
+	padding: 15px 15px 8px 15px;
+}
+.cont_top .bg{
+	background-color: #f7f7f7;
+	padding: 15px;
+	border-radius: 10px;
+}
+.cont_ipt{
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	color: #333;
+}
+.cont_ipt input{
+	border: 0;
+	background: rgba(255,255,255,0);
+	font-size: 17px;
+	color: #999;
+	margin-left: 10px;
+}
+.shangchuan{
+	background-color: #fff;
+	border-radius: 0 0 10px 10px;
+	padding: 15px;
+	margin-top: -5px;
+}
+.zpimg{
+	background: url(../img/zp.png) no-repeat;
+	width: 50px;
+	height: 9px;
+	background-image: olivedrab;
+	margin: auto;
+	margin-bottom: 20px;
+	font-size: 18px;
+	text-align: center;
+	position: relative;
+}
+.zpimg .zppo{
+	position: absolute;
+    top: -14px;
+    left: 8px;
+}
+.btn{
+	text-align: center;
+	margin: 30px auto 15px auto;
+}
+.btn button{
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #007DF9;
+	border-radius: 30px;
+	color: #FFFFFF;
+	margin: auto;
+	border-style: none;
+	font-size: 16px;
+}
+#label {
+	background-color: #fff;
+	text-align: center;
+	height: 170px;
+	width: 220px;
+	margin: 30px auto;
+	position: relative;
+}
+/* #get_image {
+	position: absolute;
+} */
+#edit_pic {
+	position: absolute;
+	display: none;
+	background: #000;
+}
+#cover_box {
+	position: absolute;
+	z-index: 9999;
+	display: none;
+	top: 0px;
+	left: 0px;
+}
+#show_edit {
+	margin: 0 auto;
+	display: inline-block;
+}
+#show_pic {
+	width: 1in;
+	height: 1in;
+	border: 2px solid #000;
+	overflow: hidden;
+	margin: 0 auto;
+	display: inline-block;
+}

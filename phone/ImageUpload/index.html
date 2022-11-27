@@ -3,87 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-    <title>证件上传</title>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script src="js/main.js"></script>
+    <title>信息采集</title>
   </head>
-  <style type="text/css">
-    body {
-      text-align: center;
-    }
-    #label {
-      border: 1px solid #ccc;
-      background-color: #fff;
-      text-align: center;
-      height: 300px;
-      width: 300px;
-      margin: 20px auto;
-      position: relative;
-    }
-    #get_image {
-      position: absolute;
-    }
-    #edit_pic {
-      position: absolute;
-      display: none;
-      background: #000;
-    }
-    #cover_box {
-      position: absolute;
-      z-index: 9999;
-      display: none;
-      top: 0px;
-      left: 0px;
-    }
-    #show_edit {
-      margin: 0 auto;
-      display: inline-block;
-    }
-    #show_pic {
-      width: 1in;
-      height: 1in;
-      border: 2px solid #000;
-      overflow: hidden;
-      margin: 0 auto;
-      display: inline-block;
-    }
-  </style>
   <body>
-    <div>
-      姓名
-      <input type="input" id="name"/>
-    </div>
-    <div>
-      学号
-      <input type="input" id="idcard"/>
-    </div>
-    <div>
-      照片
-      <input style="display:none;" type="file" name="file" capture="camera" accept="image/*,video/*" id="post_file" />
-      <!-- <input type="file" name="file" id="post_file" /> -->
-      <!-- <button id="save_button">确定</button> -->
-      <div>
-        <input type="radio" name="size" value="1"  checked="checked">1寸</input>
-        <input type="radio" name="size" value="2">2寸</input>
-        <button onclick="_file.cleanFiles()">清空</button>
-
-      </div>
-      <div id="label">
-        <div id="plusButton" style="font-size: 10rem;cursor: default;" onclick="document.querySelector('#post_file').click()">+</div>
-        <canvas id="get_image"></canvas>
-        <p>
-          <canvas id="cover_box"></canvas>
-          <canvas id="edit_pic"></canvas>
-        </p>
-      </div>
-      <p>
-        <span id="show_edit"></span>
-        <span id="show_pic" style="display:none;"><img src="" /></span>
-      </p>
-    </div>
+	<div class="top_head">
+		<span class="top_spanl"><img src="img/fanhui.png"></span>
+		<span class="top_spanc">信息采集</span>
+	</div>
+	<div class="contant">
+		<div class="cont_top">
+			<div class="bg">
+				<div class="cont_ipt" style="padding-bottom: 10px;border-bottom: 1px #ededed solid;margin-bottom: 10px;">
+					姓名
+					<input type="input" id="name" value="请输入姓名"/>
+				</div>
+				<div class="cont_ipt">
+					学号
+					<input type="input" id="idcard" value="请输入学号"/>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: -1px;"><img src="img/xian.png" ></div>
+		<div class="shangchuan">
+			<div>
+			  <div class="zpimg">
+				  <div class="zppo">照片</div>
+			  </div>
+			  <input style="display:none;" type="file" name="file" capture="camera" accept="image/*,video/*" id="post_file" />
+			  <!-- <input type="file" name="file" id="post_file" /> -->
+			  <!-- <button id="save_button">确定</button> -->
+			  <div style="text-align: center;">
+			    <input type="radio" name="size" value="1"  checked="checked">1寸</input>
+			    <input type="radio" name="size" value="2">2寸</input>
+			    <button onclick="_file.cleanFiles()" style="border: 1px #ddd solid;margin-left: 5px;">清空</button>
+			
+			  </div>
+			  <div id="label">
+			    <div id="plusButton" style="cursor: default;" onclick="document.querySelector('#post_file').click()"><img src="img/tupian.png" ></div>
+			    <canvas id="get_image"></canvas>
+			    <div>
+			      <canvas id="cover_box"></canvas>
+			      <canvas id="edit_pic"></canvas>
+			    </p>
+			  </div>
+			  <p>
+			    <span id="show_edit"></span>
+			    <span id="show_pic" style="display:none;"><img src="" /></span>
+			  </p>
+			</div>
+			<div class="btn"><button id="save_button">提 交</button></div>
+		</div>
+	</div>
+    
+    
     <div>
       <!-- <input type="file" name="file"/> -->
       <div id="consoleLog"></div>
     </div>
-    <div><button id="save_button">提交</button></div>
+    
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
