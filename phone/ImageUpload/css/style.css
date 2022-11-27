@@ -95,7 +95,8 @@ img{
 	background-color: #fff;
 	text-align: center;
 	height: 3in;
-	width: 4in;
+	width: 100%;
+	max-width: 4in;
 	margin: 30px auto;
 	position: relative;
 }
