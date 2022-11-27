@@ -7,7 +7,7 @@ function isMobile() {
   }
 }
 function log(txt,isClean = false){
-  //return;
+  return;
   if(isClean){
     document.querySelector('#consoleLog').innerHTML = ''
   }
@@ -110,6 +110,8 @@ let postFile = {
 
     document.getElementById('show_edit').style.background = '';
 
+    document.querySelector('#plusButton').style.display = ''
+
   },
   paintImage: function(url) {
     let t = this;
@@ -138,6 +140,8 @@ let postFile = {
       t.imgUrl = t.getImage.toDataURL();
       t.cutImage();
       t.drag();
+
+      document.querySelector('#plusButton').style.display = 'none'
     };
   },
   cutImage: function() {
